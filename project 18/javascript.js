@@ -4,6 +4,7 @@ let profession = document.querySelector("#profession")
 let city = document.querySelector("#city")
 let profileimage = document.querySelector("#profileimage")
 let bio = document.querySelector("#bio")
+let profilesCount = 0
 
 document.querySelector("#submit").addEventListener("click",(e)=>{
     e.preventDefault()
@@ -99,9 +100,28 @@ let deletebtn = document.createElement("button");
 deletebtn.classList.add("btn-4");
 deletebtn.innerText = "Delete";
 
+deletebtn.addEventListener("click",()=>{
+    cardtop.remove();
+    profilesCount--
+let profileNo = document.querySelector("#profileNo");
+profileNo.innerText = profilesCount
+})
+
 cardtop.append(deletebtn);
 
 
 card.append(cardtop);
+profilesCount++;
 
+let profileNo = document.querySelector("#profileNo");
+profileNo.innerText = profilesCount
+
+document.querySelector("#btn-3").addEventListener("click",()=>{
+    let cards = document.querySelectorAll(".card-top");
+
+    cards.forEach((item)=>item.remove())
+    profilesCount = 0
+    let profileNo = document.querySelector("#profileNo");
+profileNo.innerText = profilesCount
+})
 })
